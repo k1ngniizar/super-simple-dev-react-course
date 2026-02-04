@@ -1,12 +1,12 @@
 import Header from "../components/Header"
 import "./TrackingPage.css"
 
-function TrackingPage() {
+function TrackingPage({cart}) {
   return (
     <>
       <title>Tracking</title>
 
-      <Header/>
+      <Header cart={cart}/>
 
       <div class="tracking-page">
         <div class="order-tracking">
