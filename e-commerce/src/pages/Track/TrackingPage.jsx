@@ -27,6 +27,22 @@ if(!orderToTrack){
 
 const productDetails = orderToTrack.products.find((product => product.productId === productId))
 
+const totalDeliveryTimeMs = productDetails.estimatedDeliveryTimeMs - orderToTrack.orderTimeMs
+
+const timePassedMs = dayjs().valueOf() - orderToTrack.orderTimeMs
+
+// const timePassedMs = totalDeliveryTimeMs * 0.3
+
+let deliveryPercent = (timePassedMs / totalDeliveryTimeMs);
+
+if(deliveryPercent > 100) {
+  deliveryPercent = 100;
+}
+
+const isPreping = deliveryPercent < 33;
+const isShipped = deliveryPercent > 33 && deliveryPercent < 100;
+const isDelivered = deliveryPercent === 100;
+
 
   return (
     <>
@@ -36,7 +52,7 @@ const productDetails = orderToTrack.products.find((product => product.productId 
 
       <div className="tracking-page">
         <div className="order-tracking">
-          <Link className="back-to-orders-link link-primary" href="orders">
+          <Link className="back-to-orders-link link-primary" to="/orders">
             View all orders
           </Link>
 
@@ -57,19 +73,19 @@ const productDetails = orderToTrack.products.find((product => product.productId 
             
 
           <div className="progress-labels-container">
-            <div className="progress-label">
+            <div className={`progress-label ${isPreping && "current-status"}`}>
               Preparing
             </div>
-            <div className="progress-label current-status">
+            <div className={`progress-label ${isShipped && "current-status"}`}>
               Shipped
             </div>
-            <div className="progress-label">
+            <div className={`progress-label ${isDelivered && "current-status"}`}>
               Delivered
             </div>
           </div>
 
           <div className="progress-bar-container">
-            <div className="progress-bar"></div>
+            <div style={{width: `${deliveryPercent}%`}} className="progress-bar"></div>
           </div>
         </div>
       </div>
