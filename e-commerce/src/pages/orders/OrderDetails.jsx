@@ -29,7 +29,7 @@ function OrderDetails({order}) {
             </div>
 
             <div className="product-actions">
-              <Link to="/track">
+              <Link to={`/track/${order.id}/${product.productId}`}>
                 <button className="track-package-button button-secondary">
                   Track package
                 </button>

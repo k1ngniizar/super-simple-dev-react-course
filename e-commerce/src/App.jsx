@@ -18,7 +18,7 @@ function App() {
     }
 
     fetchAppData()
-    
+
   },[])
 
   return (
@@ -27,7 +27,7 @@ function App() {
       <Route path='/' element={<HomePage cart={cart} />} />
       <Route path='/checkout' element={<CheckoutPage cart={cart} />} />
       <Route path='/orders' element={<OrderPage cart={cart} />} />
-      <Route path='/track' element={<TrackingPage cart={cart} />} />
+      <Route path='/track/:orderId/:productId' element={<TrackingPage cart={cart} />} />
     </Routes>
     </>
   )
