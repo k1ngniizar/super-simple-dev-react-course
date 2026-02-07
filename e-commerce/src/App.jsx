@@ -9,11 +9,16 @@ import HomePage from './pages/home/HomePage'
 
 function App() {
   const [cart, setCart] = useState([])
+
   useEffect(()=>{
-    axios.get("/api/cart-items?expand=product")
-      .then( response => {
-        setCart(response.data)
-      })
+
+    const fetchAppData = async ()=>{
+      const response = await axios.get("/api/cart-items?expand=product")
+      setCart(response.data)
+    }
+
+    fetchAppData()
+    
   },[])
 
   return (
