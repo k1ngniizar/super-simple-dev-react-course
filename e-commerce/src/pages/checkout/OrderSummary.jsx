@@ -19,7 +19,7 @@ function OrderSummary({deliveryOptions, cart, loadCartData, fetchPaymentSummaryD
             }
 
             <div className="cart-item-details-grid">
-              <CartItemDetails cartItem={cartItem} />
+              <CartItemDetails cartItem={cartItem} loadCartData={loadCartData} fetchPaymentSummaryData={fetchPaymentSummaryData} />
 
               <DeliveryOptions fetchPaymentSummaryData={fetchPaymentSummaryData}  loadCartData={loadCartData} deliveryOptions={deliveryOptions} cartItem={cartItem} />
             </div>

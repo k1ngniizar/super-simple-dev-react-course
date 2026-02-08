@@ -39,7 +39,7 @@ function CheckoutPage({cart, loadCartData}) {
           <OrderSummary deliveryOptions={deliveryOptions} fetchPaymentSummaryData={fetchPaymentSummaryData}  cart={cart} loadCartData={loadCartData} />
 
           {paymentSummary && (
-            <PaymentSummary paymentSummary={paymentSummary} />
+            <PaymentSummary loadCartData={loadCartData} paymentSummary={paymentSummary} cart={cart} />
           )}
         </div>
       </div>
