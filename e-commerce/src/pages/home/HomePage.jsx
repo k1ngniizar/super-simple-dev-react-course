@@ -3,18 +3,28 @@ import axios from "axios"
 import Header from "../../components/Header"
 import "./HomePage.css"
 import ProductsGrid from "./ProductsGrid"
+import { useSearchParams } from "react-router"
 
 function HomePage({cart, loadCartData}) {
+  const [searchParams] = useSearchParams()
+  const search = searchParams.get("search")
+
   const [products, setProducts]= useState([])
+
+  
   useEffect(()=>{
     const fetchProductData = async () => {
-      const response = await axios.get("/api/products")
-
-      setProducts(response.data)
+      if(search){
+        const response = await axios.get(`/api/products?search=${search}`)
+        setProducts(response.data)
+      } else {
+        const response = await axios.get("/api/products")
+        setProducts(response.data)
+      }
+  
     }
-    
     fetchProductData()
-  },[])
+  },[search])
 
   return (
     <>

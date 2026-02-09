@@ -1,11 +1,20 @@
+import axios from 'axios'
 import dayjs from 'dayjs'
 import { Link } from 'react-router'
 
-function OrderDetails({order}) {
+function OrderDetails({order, loadCartData}) {
   return (
     <>
     {
       order.products.map(product => {
+        const addToCartFn = async () => {
+          await axios.post("/api/cart-items", {
+            productId: product.product.id,
+            quantity: 1
+          })
+
+          await loadCartData()
+        }
         return (
           <div key={product.productId} className="order-details-grid">
             <div className="product-image-container">
@@ -22,7 +31,7 @@ function OrderDetails({order}) {
               <div className="product-quantity">
                 Quantity: {product.quantity}
               </div>
-              <button className="buy-again-button button-primary">
+              <button onClick={addToCartFn} className="buy-again-button button-primary">
                 <img className="buy-again-icon" src="images/icons/buy-again.png" />
                 <span className="buy-again-message">Add to Cart</span>
               </button>

@@ -5,7 +5,7 @@ import axios from "axios"
 import OrderHeader from "./OrderHeader"
 import OrderDetails from "./OrderDetails"
 
-function OrderPage({cart}) {
+function OrderPage({cart, loadCartData}) {
   const [orders, setOrders] = useState([])
 
   useEffect(() => {
@@ -32,7 +32,7 @@ function OrderPage({cart}) {
                 <div key={order.id} className="order-container">
                   <OrderHeader order={order} />
 
-                  <OrderDetails order={order} />
+                  <OrderDetails loadCartData={loadCartData} order={order} />
                   
                 </div>
               )
