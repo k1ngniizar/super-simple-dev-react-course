@@ -64,7 +64,7 @@ function Products({product, loadCartData}) {
                     Added
                   </div>
     
-                  <button onClick={addToCartFn} className="add-to-cart-button button-primary">
+                  <button data-testid="add-to-cart-button" onClick={addToCartFn} className="add-to-cart-button button-primary">
                     Add to Cart
                   </button>
                 </div>
