@@ -22,7 +22,7 @@ function Products({product, loadCartData}) {
   return (
     <div className="product-container">
                   <div className="product-image-container">
-                    <img className="product-image"
+                    <img data-testid="product-image" className="product-image"
                       src={product.image} />
                   </div>
     
@@ -31,7 +31,7 @@ function Products({product, loadCartData}) {
                   </div>
     
                   <div className="product-rating-container">
-                    <img className="product-rating-stars"
+                    <img data-testid="product-rating"  className="product-rating-stars"
                       src={`images/ratings/rating-${product.rating.stars*10}.png`} />
                     <div className="product-rating-count link-primary">
                       {product.rating.count}
