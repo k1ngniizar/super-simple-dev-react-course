@@ -20,7 +20,7 @@ function Products({product, loadCartData}) {
   }
 
   return (
-    <div className="product-container">
+    <div data-testid="product-container" className="product-container">
       <div className="product-image-container">
         <img data-testid="product-image" className="product-image"
           src={product.image} />
